@@ -1,0 +1,12 @@
+{
+    "folders": [
+        {
+            "path": ".."
+        }
+    ],
+    "settings": {
+        "unocss.exclude": ["*.css", "*.scss", "**/*.scss"],
+        "unocss.include": ["*.html", "*.tsx"],
+        "unocss.colorPreview": false
+    }
+}

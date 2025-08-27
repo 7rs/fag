@@ -1,0 +1,7 @@
+{
+    "recommendations": [
+        "biomejs.biome",
+        "antfu.unocss",
+        "oxc.oxc-vscode"
+    ]
+}

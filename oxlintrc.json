@@ -1,0 +1,4 @@
+{
+    "plugins": ["oxc", "typescript", "import", "node", "promise", "jsx-a11y", "react", "react-pref"],
+    "ignorePatterns": ["node_modules/**"]
+}
