@@ -4,14 +4,22 @@
     "version": "0.0.1",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
+    "exports": {
+        ".": "./dist/index.js",
+        "./shaders/fragment.glsl": "./dist/shaders/fragment.glsl",
+        "./shaders/vertex.glsl": "./dist/shaders/vertex.glsl"
+    },
     "scripts": {
-        "build": "tsc",
+        "build": "tsc && bun run copy-shaders",
+        "copy-shaders": "powershell -Command \"Copy-Item -Recurse -Force src/shaders dist/\"",
         "dev": "tsc --watch"
     },
     "devDependencies": {
         "typescript": "5.9.2"
     },
     "files": [
-        "src"
+        "dist",
+        "dist/shaders",
+        "dist/shaders/*.glsl"
     ]
 }

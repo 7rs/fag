@@ -32,4 +32,10 @@ export default defineConfig({
   resolve: {
     alias: getAliases(tsconfig.compilerOptions.paths),
   },
+
+  assetsInclude: ["**/*.glsl", "**/*.json"],
+
+  define: {
+    "import.meta.glob": "import.meta.glob",
+  },
 });

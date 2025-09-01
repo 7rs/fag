@@ -4,14 +4,14 @@
             "@/*": ["src/*"],
             "@assets/*": ["src/assets/*"],
             "@styles/*": ["src/styles/*"],
-            "@components/*": ["src/components/*"],
+            "@components/*": ["src/components/*"]
         },
 
         "baseUrl": ".",
         "resolveJsonModule": true,
         "strict": true,
 
-        "target": "ESNext",
+        "target": "esnext",
         "module": "nodenext",
         "moduleResolution": "nodenext",
         "moduleDetection": "force",
