@@ -35,3 +35,8 @@ export function convertColor(color: WebGLColor | RGBColor | string) {
 export function random(min: number, max: number): number {
   return Math.floor(min + Math.random() * (max - min));
 }
+
+export function randomFloat(min: number, max: number, precision = 2): number {
+  const random = min + Math.random() * (max - min);
+  return Number(random.toFixed(precision));
+}

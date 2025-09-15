@@ -1,5 +1,5 @@
-import type { Themes } from "./colors.js";
-import { random, convertRGBColor, convertHexColor } from "./utils.js";
+import type { Palettes } from "./colors.js";
+import { random, randomFloat, convertRGBColor, convertHexColor } from "./utils.js";
 
 export type RGBColor = [1, number, number, number];
 
@@ -29,7 +29,7 @@ export interface FrameConfigGenerationOptions {
   framesCount: number;
   colorsCount?: number | RandomRange;
   disableColorsPair?: boolean;
-  pallets?: WebGLColor[] | RGBColor[] | string[] | Themes[];
+  pallets?: WebGLColor[] | RGBColor[] | string[] | Palettes[];
 }
 
 const DEFAULT_FRAMES_COUNT = 1;
@@ -58,7 +58,7 @@ function createRandomColors(colorsCount: number, disableColorsPair?: boolean): W
 }
 
 function createRandomColorsFromPallets(
-  _pallets: WebGLColor[] | RGBColor[] | string[] | Themes[],
+  _pallets: WebGLColor[] | RGBColor[] | string[] | Palettes[],
   colorsCount: number,
   disableColorsPair?: boolean,
 ): WebGLColor[] {
@@ -132,9 +132,9 @@ export function createFrameConfigArray(
   return Array.from({ length: framesCount }).map((_) => {
     const metaballs: MetaballConfig[] = colors.map((color) => {
       return {
-        x: Math.random() * 2.0 - 1.0,
-        y: Math.random() * 2.0 - 1.0,
-        strength: 0.1 + Math.random() * 0.4,
+        x: randomFloat(-1.0, 1.0),
+        y: randomFloat(-1.0, 1.0),
+        strength: randomFloat(0.15, 0.6),
         color: color,
       };
     });

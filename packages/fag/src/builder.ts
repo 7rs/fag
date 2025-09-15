@@ -12,9 +12,13 @@ import { convertColor } from "./utils.js";
 export class FAGBuilder {
   canvas: HTMLCanvasElement;
   ctx: WebGL2RenderingContext;
+  configs: FrameConfig[] | FrameConfigGenerationOptions | undefined;
+  background: WebGLColor | RGBColor | string | undefined;
+
   private frames: FrameConfig[] = [];
   private shaderManager: ShaderManager;
   private renderer: Renderer;
+  private animated: boolean = false;
 
   constructor(
     canvasId: string,
@@ -26,9 +30,11 @@ export class FAGBuilder {
     this.setupCanvasSize();
     this.ctx = this.getWebGLContext();
     this.shaderManager = new ShaderManager(this.ctx, shaders);
+    this.background = background;
     const color = convertColor(background || "#000000");
     this.renderer = new Renderer(this.ctx, { color: { red: color[0], green: color[1], blue: color[2] } });
 
+    this.configs = configs;
     if (Array.isArray(configs)) {
       this.frames = configs;
     } else {
@@ -43,7 +49,12 @@ export class FAGBuilder {
   }
 
   start(): void {
+    this.animated = true;
     const renderLoop = () => {
+      if (!this.animated) {
+        return;
+      }
+
       this.render();
       requestAnimationFrame(renderLoop);
     };
